@@ -6,8 +6,10 @@ use App\Models\Job;
 
 
 Route::get('/', function () {
-    $jobs = Job::all();
-    dd($jobs[0]);
+    $jobs = Job::with('employer')->get();
+    return view('jobs',[
+        'jobs'=> $jobs
+    ]);
 });
 
 
