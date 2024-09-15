@@ -6,7 +6,7 @@ use App\Models\Job;
 
 
 Route::get('/', function () {
-    $jobs = Job::with('employer')->get();
+    $jobs = Job::with('employer')->paginate(3);
     return view('jobs',[
         'jobs'=> $jobs
     ]);
